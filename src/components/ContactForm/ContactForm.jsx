@@ -1,25 +1,25 @@
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addContact } from 'redux/contactsSlice';
 
 import { Form, Label, Input, Button } from './ContactForm.styled';
 
-const ContactForm = ({onSubmit}) => {
+const ContactForm = ({ onSubmit }) => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
   const dispatch = useDispatch();
 
   const handleChange = ({ target }) => {
-    const {name, number} = target.form.elements;
+    const { name, number } = target.form.elements;
     setName(name.value);
     setNumber(number.value);
   };
 
   const handleSubmit = evt => {
     evt.preventDefault();
-    
+
     dispatch(addContact(name, number));
     setName('');
     setNumber('');
@@ -37,6 +37,7 @@ const ContactForm = ({onSubmit}) => {
           title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
           required
           value={name}
+          autoFocus
           onChange={handleChange}
         />
       </Label>
@@ -59,5 +60,5 @@ const ContactForm = ({onSubmit}) => {
 
 export default ContactForm;
 ContactForm.propTypes = {
-  onSubmit: PropTypes.func.isRequired
-}
+  onSubmit: PropTypes.func.isRequired,
+};
