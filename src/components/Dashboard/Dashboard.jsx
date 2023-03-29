@@ -13,21 +13,12 @@ import defaultValue from 'data/defaultValue';
 
 const Dashboard = () => {
   // const [contacts, setContacts] = useLocalStorage('contacts', defaultValue);
-  const [filter, setFilter] = useState('');
   const [showModal, setShowModal] = useState(false);
 
-  const filterChange = ({ currentTarget }) => {
-    setFilter(currentTarget.value);
-  };
 
   const toggleModal = () => {
     setShowModal(!showModal);
   };
-
-  // const normalizedFilter = filter.toLowerCase();
-  // const filteredContacts = contacts.filter(contact =>
-  //   contact.name.toLowerCase().includes(normalizedFilter)
-  // );
 
   return (
     <Container>
@@ -37,21 +28,13 @@ const Dashboard = () => {
       </Button>
       {showModal && (
         <Modal onClose={toggleModal}>
-          <ContactForm />
+          <ContactForm onSubmit={toggleModal} />
         </Modal>
       )}
-      {/* <ContactForm onSubmit={this.formSubmit} /> */}
 
       <SubTitle>Contacts</SubTitle>
-      <Filter value={filter} onChange={filterChange} />
-
-      {/* {contacts.length === 0 ? (
-        <p>Phonebook is empty</p>
-      ) : filteredContacts.length === 0 ? (
-        <p>Contact with name '{filter}' not found</p>
-      ) : ( */}
-        <ContactList />
-      {/* )} */}
+      <Filter />
+      <ContactList />
     </Container>
   );
 };

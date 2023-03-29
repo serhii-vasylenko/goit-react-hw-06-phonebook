@@ -16,5 +16,5 @@ const ContactListItem = ({ contact: { name, number, id } }) => {
 
 export default ContactListItem;
 ContactListItem.propTypes = {
-  contact: PropTypes.any,
+  contact: PropTypes.object,
 };
